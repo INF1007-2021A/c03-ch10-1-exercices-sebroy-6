@@ -2,19 +2,19 @@
 # -*- coding: utf-8 -*-
 
 
-# TODO: Importez vos modules ici
+import cmath
 import numpy as np
 import matplotlib.pyplot as plt
 
 
-def linear_values_exo1(min=-1.3, max=2.5, reps=64) -> np.ndarray:
+def linear_values_exo1(min: float=-1.3, max: float=2.5, reps: int=64) -> np.ndarray:
 
     return np.linspace(min, max, reps)
 
 
 def coordinate_conversion_exo2(cartesian_coordinates: np.ndarray) -> np.ndarray:
 
-    return np.array([((c[0]**2 + c[1]**2)**(1/2), np.arctan2(c[1], c[0])) for c in cartesian_coordinates])
+    return np.array([cmath.polar(c) for c in cartesian_coordinates])
 
 
 def find_closest_index_exo3(values: np.ndarray, number: float) -> int:
