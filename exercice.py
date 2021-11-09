@@ -58,21 +58,17 @@ def estimer_pi_exo5(nb_points: int = 5000):
     afficher_graph("Exercice #5")
 
 
-"""
+
 def integrale(intervale: tuple = (-4, 4), nb_points :int =500 ):
     x = np.linspace(intervale[0], intervale[1], nb_points)
-    y = np.e**(-x**2)
-    integrated_y = -2*x*y
+    y = [integrate.quad(lambda x: np.e**(-x**2), 0, value)[0] for value in x]
 
-    plt.scatter(x, integrated_y)
+    plt.scatter(x, y)
     afficher_graph("Exercice #6")
 
-    b = np.inf
-    a = -np.inf
+    integral_tuple = integrate.quad(lambda x: np.e**(-x**2), -np.inf, np.inf)
 
-    return integrate.quad(y, a, b, args=(a, b))
-"""
-
+    return integral_tuple[0] - integral_tuple[1]
 
 
 
@@ -81,7 +77,7 @@ if __name__ == '__main__':
     print("Fonction linear_values:", linear_values_exo1(), "\n")
     print("Fonction coordinate_conversion:", coordinate_conversion_exo2(np.array([(0, 0), (10, 10), (2, -1)])))
     print(find_closest_index_exo3(np.array([1, 3, 8, 10]), 9))
-    graph_exo4((-3, 3, 100000))
-    estimer_pi_exo5(20000)
-    #print(integrale())
+    graph_exo4()
+    estimer_pi_exo5()
+    print(integrale())
 
