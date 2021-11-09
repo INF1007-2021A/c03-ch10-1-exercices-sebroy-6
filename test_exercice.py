@@ -12,7 +12,7 @@ import exercice
 
 class TestExercice(unittest.TestCase):
     def test_linear_values(self):
-        output = list(exercice.linear_values())
+        output = list(exercice.linear_values_exo1())
         answer = list(np.linspace(start=-1.3, stop=2.5, num=64))
         self.assertListEqual(
             output,
@@ -23,7 +23,7 @@ class TestExercice(unittest.TestCase):
     def test_coordinates(self):
         cartesian_coordinates = np.array([(0, 0), (10, 10), (2, -1)])
         
-        output = exercice.coordinate_conversion(cartesian_coordinates)
+        output = exercice.coordinate_conversion_exo2(cartesian_coordinates)
         answer = np.array([(np.sqrt(c[0] ** 2 + c[1] ** 2), np.arctan2(c[1], c[0])) for c in cartesian_coordinates])
 
         np.testing.assert_array_equal(
@@ -36,7 +36,7 @@ class TestExercice(unittest.TestCase):
         values = np.array([1, 3, 8, 10])
         number = 9.5
 
-        output = exercice.find_closest_index(values, number)
+        output = exercice.find_closest_index_exo3(values, number)
         answer = np.abs(values - number).argmin()
 
         self.assertEqual(
